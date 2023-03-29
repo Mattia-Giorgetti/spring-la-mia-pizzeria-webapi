@@ -10,7 +10,9 @@
 </head>
 <body>
 <nav th:replace="~{fragments :: navbar('home')}"></nav>
-  <h1 class="text-center">Benvuti da Experis Pizza</h1>
-  <button th:replace="~{fragments :: button(link = '/pizzas', content = 'Vai alle pizze')}"></button>
+<div class="container-md py-5 d-flex flex-column align-items-center">
+    <h1 class="text-center py-5 hometitle">Benvenuti da Experis Pizza</h1>
+    <button th:replace="~{fragments :: button(link = '/pizzas', content = 'Vai alle pizze')}"></button>
+</div>
 </body>
 </html>

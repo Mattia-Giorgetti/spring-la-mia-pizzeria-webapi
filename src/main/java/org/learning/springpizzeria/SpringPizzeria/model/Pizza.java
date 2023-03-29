@@ -19,6 +19,8 @@ public class Pizza {
     @Column(nullable = false)
     private BigDecimal price;
 
+    private String image;
+
 //    GETTER SETTER
 
 
@@ -52,5 +54,13 @@ public class Pizza {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

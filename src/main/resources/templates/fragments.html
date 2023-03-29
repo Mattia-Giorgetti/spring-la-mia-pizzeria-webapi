@@ -9,16 +9,16 @@
 </head>
 <body>
 <!--NAVBAR -->
-<nav class="navbar navbar-expand-lg bg-light" th:fragment="navbar(current)">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">Experis Pizza</a>
+<nav class="navbar navbar-expand-lg bg-dark" th:fragment="navbar(current)">
+    <div class="container-md">
+        <a class="navbar-brand text-white" th:href="@{/}">Experis Pizza</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" th:classAppend="${current == 'pizzas' ? 'active' : ''}" aria-current="page" th:href="@{/pizzas}">Pizze</a>
+                    <a class="nav-link text-white" th:classAppend="${current == 'pizzas' ? 'active-li' : ''}" aria-current="page" th:href="@{/pizzas}">Pizze</a>
                 </li>
             </ul>
         </div>
@@ -26,6 +26,6 @@
 </nav>
 
 <!--BUTTON -->
-<a th:fragment="button(link, content}" th:href="@{${link}}" th:text="${content}" class="btn btn-primary"></a>
+<a th:fragment="button(link, content}" th:href="@{${link}}" th:text="${content}" class="btn btn-dark"></a>
 </body>
 </html>

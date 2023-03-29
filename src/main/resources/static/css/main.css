@@ -1,0 +1,19 @@
+body {
+ background-color: orange;
+}
+
+.card_img {
+    max-width: 500px;
+    height: 230px;
+    overflow: hidden;
+}
+.mycard-text{
+    min-height: 60px;
+}
+.active-li {
+color: orange;
+}
+
+.hometitle {
+    font-size: 5rem;
+}
