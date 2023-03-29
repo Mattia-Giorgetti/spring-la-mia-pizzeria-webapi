@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:replace="~{fragments :: head}">
+    <title>Experis Pizza</title>
+</head>
+<body>
+<nav th:replace="~{fragments :: navbar('home')}"></nav>
+  <h1 class="text-center">Benvuti da Experis Pizza</h1>
+  <button th:replace="~{fragments :: button(link = '/pizzas', content = 'Vai alle pizze')}"></button>
+</body>
+</html>
