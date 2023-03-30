@@ -10,6 +10,9 @@
 </head>
 <body>
 <nav th:replace="~{fragments :: navbar(home, false, searchcontent)}"></nav>
+<div class="jumbo">
+    <img th:src="@{/vit-ch-Oxb84ENcFfU-unsplash.jpg}" alt="" class="img-fluid">
+</div>
 <div class="container-md py-5 d-flex flex-column align-items-center">
     <h1 class="text-center py-5 hometitle">Benvenuti da Experis Pizza</h1>
     <a class="btn btn-dark" th:href="@{/pizzas}">Vai alle pizze</a>
