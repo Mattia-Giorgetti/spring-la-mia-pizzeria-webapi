@@ -9,10 +9,14 @@
     <title>Experis Pizza</title>
 </head>
 <body>
-<nav th:replace="~{fragments :: navbar(pizzas)}"></nav>
+<nav th:replace="~{fragments :: navbar(pizzas, true, ${searchcontent})}"></nav>
 <div class="container-md py-5">
-    <h1 class="text-center py-5">Le nostre pizze</h1>
-    <h3 th:unless="${pizzas.size() > 0}" class="text-warning text-center">Non sono presenti pizze</h3>
+    <h1 class="text-center py-5 main-title" th:if="${pizzas.size() > 0}">Le nostre pizze</h1>
+    <div th:unless="${pizzas.size() > 0}" class="d-flex flex-column align-items-center py-5 gap-5">
+        <h3 class="text-black fs-1 text-center">Nessuna pizza trovata</h3>
+        <a th:href="@{/pizzas}" class="btn btn-dark text-white">Indietro</a>
+    </div>
+
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-10 my-4" th:each="pizza : ${pizzas}" th:object="${pizza}">
             <div class="card bg-dark">
@@ -21,11 +25,9 @@
                     <h5 class="card-title text-warning" th:text="*{name}"></h5>
                     <p class="mycard-text text-white" th:text="*{description}"></p>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-dark text-warning" th:text="|*{price} €|"></li>
-                </ul>
-                <div class="card-body">
-<!--                    <a href="#" class="card-link">view details</a>-->
+                <p class="bg-dark text-warning text-center fs-3 fw-bolder mb-0" th:text="|*{price} €|"></p>
+                <div class="p-4">
+                    <a th:href="@{|/pizzas/*{id}|}"><i class="fa-sharp fa-solid fa-pizza-slice fa-beat fa-2xl" style="color: #ffc007;"></i></a>
                 </div>
             </div>
         </div>

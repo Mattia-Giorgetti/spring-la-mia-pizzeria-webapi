@@ -4,16 +4,17 @@
    <th:block th:fragment="head">
        <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
        <link rel="stylesheet" th:href="@{/css/main.css}">
+       <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.3.0/css/all.min.css}">
        <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}" defer></script>
    </th:block>
 </head>
 <body>
 <!--NAVBAR -->
-<nav class="navbar navbar-expand-lg bg-dark" th:fragment="navbar(current)">
+<nav class="navbar navbar-expand-lg bg-dark" th:fragment="navbar(current, showsearch, searchcontent)">
     <div class="container-md">
         <a class="navbar-brand text-white" th:href="@{/}">Experis Pizza</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon text-white"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -21,11 +22,12 @@
                     <a class="nav-link text-white" th:classAppend="${current == 'pizzas' ? 'active-li' : ''}" aria-current="page" th:href="@{/pizzas}">Pizze</a>
                 </li>
             </ul>
+            <form class="d-flex" role="search" method="get" th:action="@{/pizzas}" th:if="${showsearch}">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" th:value="${searchcontent}">
+                <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ffc007;"></i></button>
+            </form>
         </div>
     </div>
 </nav>
-
-<!--BUTTON -->
-<a th:fragment="button(link, content}" th:href="@{${link}}" th:text="${content}" class="btn btn-dark"></a>
 </body>
 </html>
