@@ -1,6 +1,10 @@
 package org.learning.springpizzeria.SpringPizzeria.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 
@@ -11,12 +15,16 @@ public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false)
+    @NotEmpty(message = "Non puoi lascare vuoto questo campo")
+    @Size(min = 1, max = 20, message = "La lunghezza del campo deve essere tra 1 e 20")
     private String name;
     @Lob
+    @NotEmpty(message = "Non puoi lascare vuoto questo campo")
+    @Size(min = 1,max = 100, message = "La lunghezza del campo deve essere tra 1 e 100")
     private String description;
 
-    @Column(nullable = false)
+    @NotNull(message = "Non puoi lascare vuoto questo campo")
+    @Positive(message = "Puoi inserire solo valori maggiori di 0")
     private BigDecimal price;
 
     private String image;
