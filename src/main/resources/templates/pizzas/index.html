@@ -18,6 +18,15 @@
         <a th:href="@{/pizzas}" class="btn btn-dark text-white">Indietro</a>
     </div>
 
+    <th:block th:if="${message}">
+        <div class="alert alert-dismissible fade show"
+             th:classAppend="${#strings.equals(message.type, 'SUCCESS')} ? alert-success : alert-danger">
+            <div th:text="${message.text}"></div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </th:block>
+
+
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-10 my-4" th:each="pizza : ${pizzas}" th:object="${pizza}">
             <div class="card bg-dark">
@@ -27,8 +36,10 @@
                     <p class="mycard-text text-white" th:text="*{description}"></p>
                 </div>
                 <p class="bg-dark text-warning text-center fs-3 fw-bolder mb-0" th:text="|*{price} €|"></p>
-                <div class="p-4">
+                <div class="p-4 d-flex align-items-center justify-content-between">
                     <a th:href="@{|/pizzas/*{id}|}"><i class="fa-sharp fa-solid fa-pizza-slice fa-beat fa-2xl" style="color: #ffc007;"></i></a>
+                    <a th:href="@{|/pizzas/edit/*{id}|}"><i class="fa-solid fa-pen fa-2xl" style="color: #ffc007;"></i></a>
+                    <a th:href="@{|/pizzas/delete/*{id}|}"><i class="fa-solid fa-trash fa-2xl" style="color: #ffc007;"></i></a>
                 </div>
             </div>
         </div>

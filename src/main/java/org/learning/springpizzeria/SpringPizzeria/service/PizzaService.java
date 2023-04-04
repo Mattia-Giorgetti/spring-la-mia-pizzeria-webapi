@@ -34,7 +34,31 @@ public class PizzaService {
         newPizza.setName(formPizza.getName());
         newPizza.setDescription(formPizza.getDescription());
         newPizza.setPrice(new BigDecimal(String.valueOf(formPizza.getPrice())));
-        newPizza.setImage(formPizza.getImage());
+        if (formPizza.getImage().isEmpty()){
+            newPizza.setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
+        } else {
+            newPizza.setImage(formPizza.getImage());
+        }
+
         return pizzaRepository.save(newPizza);
+    }
+
+    public Pizza updatePizza(Pizza formPizza, Integer id) throws RuntimeException {
+        Pizza updatedBook = getPizzaById(id);
+        updatedBook.setName(formPizza.getName());
+        updatedBook.setDescription(formPizza.getDescription());
+        updatedBook.setPrice(formPizza.getPrice());
+        updatedBook.setImage(formPizza.getImage());
+        return pizzaRepository.save(updatedBook);
+    }
+
+    public boolean deleteByID(Integer id) throws RuntimeException{
+        pizzaRepository.findById(id).orElseThrow(() -> new RuntimeException(Integer.toString(id)));
+        try {
+            pizzaRepository.deleteById(id);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
     }
 }
