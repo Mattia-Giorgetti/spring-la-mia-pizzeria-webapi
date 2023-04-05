@@ -27,3 +27,9 @@ color: orange;
     height: 500px;
     overflow:hidden;
 }
+.crud_btns a {
+   transition: all 0.4s ease;
+}
+.crud_btns a:hover {
+    transform: scale(1.2);
+}

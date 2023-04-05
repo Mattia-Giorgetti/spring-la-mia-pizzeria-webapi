@@ -5,7 +5,7 @@ import java.awt.*;
 public class FlashMessage {
 
     public enum FlashMessageType {
-        SUCCESS, ERROR
+        SUCCESS, ERROR, INFO
     }
     private FlashMessageType type;
     private String text;

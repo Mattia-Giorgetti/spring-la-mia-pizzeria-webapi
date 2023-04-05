@@ -26,6 +26,8 @@
         </div>
     </th:block>
 
+<!--    <div th:replace="~{fragments :: alert(${message.type}, ${message.text})}"></div>-->
+
 
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-10 my-4" th:each="pizza : ${pizzas}" th:object="${pizza}">
@@ -36,10 +38,10 @@
                     <p class="mycard-text text-white" th:text="*{description}"></p>
                 </div>
                 <p class="bg-dark text-warning text-center fs-3 fw-bolder mb-0" th:text="|*{price} €|"></p>
-                <div class="p-4 d-flex align-items-center justify-content-between">
-                    <a th:href="@{|/pizzas/*{id}|}"><i class="fa-sharp fa-solid fa-pizza-slice fa-beat fa-2xl" style="color: #ffc007;"></i></a>
-                    <a th:href="@{|/pizzas/edit/*{id}|}"><i class="fa-solid fa-pen fa-2xl" style="color: #ffc007;"></i></a>
-                    <a th:href="@{|/pizzas/delete/*{id}|}"><i class="fa-solid fa-trash fa-2xl" style="color: #ffc007;"></i></a>
+                <div class="p-4 d-flex align-items-center justify-content-between mt-4 crud_btns">
+                    <a title="Mostra dettagli" th:href="@{|/pizzas/*{id}|}"><i class="fa-sharp fa-solid fa-pizza-slice fa-beat fa-2xl" style="color: #ffc007;"></i></a>
+                    <a title="Modifica" th:href="@{|/pizzas/edit/*{id}|}"><i class="fa-solid fa-pen fa-2xl" style="color: #ffc007;"></i></a>
+                    <a title="Elimina" th:href="@{|/pizzas/delete/*{id}|}"><i class="fa-solid fa-trash fa-2xl" style="color: #ffc007;"></i></a>
                 </div>
             </div>
         </div>
