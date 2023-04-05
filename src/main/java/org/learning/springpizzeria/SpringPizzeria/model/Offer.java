@@ -1,6 +1,7 @@
 package org.learning.springpizzeria.SpringPizzeria.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -17,7 +18,10 @@ public class Offer {
     @NotEmpty(message = "Non puoi lascare vuoto questo campo")
     @Size(min = 1, max = 15, message = "La lunghezza del campo deve essere tra 1 e 15")
     private String title;
+    @FutureOrPresent(message = "Non puoi inserire una data già passata!")
     private LocalDate startingDate;
+
+    @FutureOrPresent(message = "Non puoi inserire una data già passata!")
     private LocalDate finishDate;
 
     @ManyToOne
