@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "pizzas")
@@ -28,6 +29,9 @@ public class Pizza {
     private BigDecimal price;
 
     private String image;
+
+    @OneToMany(mappedBy = "pizza")
+    private List<Offer> offers;
 
 //    GETTER SETTER
 
@@ -70,5 +74,13 @@ public class Pizza {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
     }
 }
