@@ -64,16 +64,18 @@ public class IngredientController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Integer id, @RequestParam("ingredientId")Optional<Integer> ingredientIdParam, RedirectAttributes redirectAttributes){
-        Integer ingredientId = ingredientIdParam.get();
+    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes){
         try {
-            ingredientService.delete(id);
-            redirectAttributes.addFlashAttribute("message", new FlashMessage(FlashMessage.FlashMessageType.SUCCESS, "Cancellato con successo"));
-        } catch (RuntimeException e ){
-            redirectAttributes.addFlashAttribute("message", new FlashMessage(FlashMessage.FlashMessageType.ERROR, "Impossibile Cancellare"));
-
+            boolean success= ingredientService.deleteByID(id);
+            if (success){
+                redirectAttributes.addFlashAttribute("message", new FlashMessage(FlashMessage.FlashMessageType.SUCCESS, "Elemento cancellato con successo"));
+            } else {
+                redirectAttributes.addFlashAttribute("message", new FlashMessage(FlashMessage.FlashMessageType.ERROR, "Impossibile cancellare questo elemento"));
+            }
+        } catch (RuntimeException e){
+            redirectAttributes.addFlashAttribute("message", new FlashMessage(FlashMessage.FlashMessageType.ERROR, "Pizza con id: " + id + "non trovata"));
         }
-        return  "redirect:/ingredients";
+        return "redirect:/ingredients";
     }
 
 }

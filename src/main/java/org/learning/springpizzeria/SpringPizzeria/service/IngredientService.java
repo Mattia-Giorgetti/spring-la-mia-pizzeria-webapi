@@ -39,8 +39,13 @@ public class IngredientService {
         return ingredientRepository.save(ingredientUpdating);
     }
 
-    public void delete(Integer id){
-        Ingredient ingredientToDelete = getIngredientById(id);
-        ingredientRepository.delete(ingredientToDelete);
+    public boolean deleteByID(Integer id) throws RuntimeException{
+        ingredientRepository.findById(id).orElseThrow(() -> new RuntimeException(Integer.toString(id)));
+        try {
+            ingredientRepository.deleteById(id);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
     }
 }
