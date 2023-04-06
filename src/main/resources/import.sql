@@ -8,3 +8,16 @@ INSERT INTO db_pizzeria.offers(finish_date, starting_date, title, pizza_id)VALUE
 INSERT INTO db_pizzeria.offers(finish_date, starting_date, title, pizza_id)VALUES('2023-05-01', '2023-04-05', 'Free Drink', 1);
 INSERT INTO db_pizzeria.offers(finish_date, starting_date, title, pizza_id)VALUES('2023-04-15', '2023-04-05', 'No Fee', 2);
 INSERT INTO db_pizzeria.offers(finish_date, starting_date, title, pizza_id)VALUES('2023-05-05', '2023-04-05', '2x1', 3);
+
+INSERT INTO db_pizzeria.ingredients(name)VALUES('Mozzarella');
+INSERT INTO db_pizzeria.ingredients(name)VALUES('Pomodoro');
+INSERT INTO db_pizzeria.ingredients(name)VALUES('Basilico');
+INSERT INTO db_pizzeria.ingredients(name)VALUES('Tonno');
+INSERT INTO db_pizzeria.ingredients(name)VALUES('Cipolla');
+INSERT INTO db_pizzeria.ingredients(name)VALUES('Verdure');
+INSERT INTO db_pizzeria.ingredients(name)VALUES('Gorgonzola');
+INSERT INTO db_pizzeria.ingredients(name)VALUES('Pecorino');
+INSERT INTO db_pizzeria.ingredients(name)VALUES('Bufala');
+INSERT INTO db_pizzeria.ingredients(name)VALUES('Guanciale');
+INSERT INTO db_pizzeria.ingredients(name)VALUES('Nduja');
+INSERT INTO db_pizzeria.ingredients(name)VALUES('Salsiccia');

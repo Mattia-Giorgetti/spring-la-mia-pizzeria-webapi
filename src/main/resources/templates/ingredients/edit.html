@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link th:replace="~{fragments :: head}">
+  <title>Experis Pizza</title>
+</head>
+<body>
+<nav th:replace="~{fragments :: navbar(pizza, false, searchcontent)}"></nav>
+<div class="container-md">
+  <h5 class="py-5">Modifica ingrediente</h5>
+
+  <form id="ingredients-form" th:action="@{|/ingredients/edit/${ingredient.id}|}" method="post" th:object="${ingredient}">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nome*</label>
+      <input type="text" class="form-control" id="name" th:field="*{name}" th:errorClass="is-invalid">
+      <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">
+        <ul>
+          <li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
+        </ul>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-dark">Modifica</button>
+  </form>
+</div>
+</body>
+</html>

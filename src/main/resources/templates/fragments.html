@@ -20,12 +20,17 @@
             <span class="navbar-toggler-icon text-white"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link text-white" th:classAppend="${current == 'pizzas' ? 'active-li' : ''}" aria-current="page" th:href="@{/pizzas}">Pizze</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search" method="get" th:action="@{/pizzas}" th:if="${showsearch}">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white" th:classAppend="${current == 'ingredients' ? 'active-li' : ''}" aria-current="page" th:href="@{/ingredients}">Ingredienti</a>
+                </li>
+            </ul>
+            <form class="d-flex ms-auto" role="search" method="get" th:action="@{/pizzas}" th:if="${showsearch}">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" th:value="${searchcontent}">
                 <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ffc007;"></i></button>
             </form>

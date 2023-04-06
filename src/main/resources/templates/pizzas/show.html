@@ -33,7 +33,15 @@
       <a class="fs-3 bg-dark text-warning text-decoration-none w-50 p-4 rounded-2 mt-auto mb-5 mb-lg-0 d-block" th:href="@{/pizzas}"><i class="fa-solid fa-chevron-left fa-bounce fa-lg me-2" style="color: #ffc007;"></i> Torna alle pizze</a>
     </div>
   </div>
+<!--    INGREDIENTI -->
+<section class="py-5">
+    <h2>Ingredienti</h2>
+    <ul class="list-unstyled" th:if="${pizza.ingredients.size() > 0}">
+        <li th:each="ingredient : ${pizza.getSortedIngredients()}" th:text="${ingredient.name}"></li>
+    </ul>
+    <div th:unless="${pizza.ingredients.size() > 0}">Non sono ancora stati registrati degli ingredienti</div>
 
+</section>
 <!--    OFFERTE SPECIALI -->
 
     <h2>Offerte Speciali</h2>

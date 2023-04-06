@@ -68,7 +68,7 @@ public class OfferController {
         }
         try {
             Offer updatedOffer = offerService.updateOffer(formOffer, id);
-            return "redirect:/pizzas/" + Integer.toString(updatedOffer.getPizza().getId());
+            return "redirect:/pizzas/" + updatedOffer.getPizza().getId();
         } catch (RuntimeException e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }

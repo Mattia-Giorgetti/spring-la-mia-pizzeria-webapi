@@ -34,6 +34,7 @@ public class PizzaService {
         newPizza.setName(formPizza.getName());
         newPizza.setDescription(formPizza.getDescription());
         newPizza.setPrice(new BigDecimal(String.valueOf(formPizza.getPrice())));
+        newPizza.setIngredients(formPizza.getIngredients());
         if (formPizza.getImage().isEmpty()){
             newPizza.setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
         } else {
@@ -44,12 +45,13 @@ public class PizzaService {
     }
 
     public Pizza updatePizza(Pizza formPizza, Integer id) throws RuntimeException {
-        Pizza updatedBook = getPizzaById(id);
-        updatedBook.setName(formPizza.getName());
-        updatedBook.setDescription(formPizza.getDescription());
-        updatedBook.setPrice(formPizza.getPrice());
-        updatedBook.setImage(formPizza.getImage());
-        return pizzaRepository.save(updatedBook);
+        Pizza updatedPizza = getPizzaById(id);
+        updatedPizza.setName(formPizza.getName());
+        updatedPizza.setDescription(formPizza.getDescription());
+        updatedPizza.setPrice(formPizza.getPrice());
+        updatedPizza.setImage(formPizza.getImage());
+        updatedPizza.setIngredients(formPizza.getIngredients());
+        return pizzaRepository.save(updatedPizza);
     }
 
     public boolean deleteByID(Integer id) throws RuntimeException{

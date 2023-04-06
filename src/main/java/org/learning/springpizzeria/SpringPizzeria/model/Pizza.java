@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "pizzas")
@@ -32,6 +34,10 @@ public class Pizza {
 
     @OneToMany(mappedBy = "pizza")
     private List<Offer> offers;
+
+    @ManyToMany
+    @JoinTable(name = "pizza_ingredient", joinColumns = @JoinColumn(name = "pizza_id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
+    private Set<Ingredient> ingredients;
 
 //    GETTER SETTER
 
@@ -80,7 +86,20 @@ public class Pizza {
         return offers;
     }
 
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
     public void setOffers(List<Offer> offers) {
         this.offers = offers;
+    }
+
+    public List<Ingredient> getSortedIngredients(){
+        return ingredients.stream().sorted((a, b)-> {return a.getName().compareTo(b.getName());
+        }).collect(Collectors.toList());
     }
 }

@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.learning.springpizzeria.SpringPizzeria.model.FlashMessage;
 import org.learning.springpizzeria.SpringPizzeria.model.Pizza;
 import org.learning.springpizzeria.SpringPizzeria.repository.PizzaRepository;
+import org.learning.springpizzeria.SpringPizzeria.service.IngredientService;
 import org.learning.springpizzeria.SpringPizzeria.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,11 +23,14 @@ import java.util.Optional;
 @RequestMapping("/pizzas")
 public class PizzaController {
 
-    @Autowired
-    private PizzaRepository pizzaRepository;
+//    @Autowired
+//    private PizzaRepository pizzaRepository;
 
     @Autowired
     private PizzaService pizzaService;
+
+    @Autowired
+    private IngredientService ingredientService;
 
     @GetMapping
     public String index(Model model, @RequestParam(name="q") Optional<String> searchcontent){
@@ -55,13 +59,15 @@ public class PizzaController {
     @GetMapping("/create")
     public String create(Model model){
         model.addAttribute("pizza", new Pizza());
+        model.addAttribute("ingredientsList", ingredientService.getIngredients());
         return "/pizzas/create";
     }
 
     @PostMapping("/create")
-    public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+    public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
         boolean success;
         if (bindingResult.hasErrors()){
+            model.addAttribute("ingredientsList", ingredientService.getIngredients());
             return "/pizzas/create";
         }
         pizzaService.createNewPizza(formPizza);
@@ -78,6 +84,7 @@ public class PizzaController {
         try {
             Pizza pizza = pizzaService.getPizzaById(id);
             model.addAttribute("pizza", pizza);
+            model.addAttribute("ingredientsList", ingredientService.getIngredients());
             return "/pizzas/edit";
         } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -85,9 +92,10 @@ public class PizzaController {
     }
 
     @PostMapping("/edit/{id}")
-    public String update(@PathVariable Integer id, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+    public String update(@PathVariable Integer id, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
         boolean success;
         if (bindingResult.hasErrors()) {
+            model.addAttribute("ingredientsList", ingredientService.getIngredients());
             return "/pizzas/edit";
         }
         try {
