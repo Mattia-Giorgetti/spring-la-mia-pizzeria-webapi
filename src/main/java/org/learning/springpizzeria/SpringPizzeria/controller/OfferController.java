@@ -51,7 +51,7 @@ public class OfferController {
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") Integer id, Model model){
+    public String edit(@PathVariable Integer id, Model model){
         try {
             Offer offer = offerService.getOfferById(id);
             model.addAttribute("offer", offer);
@@ -75,21 +75,22 @@ public class OfferController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes){
-        Pizza pizza = pizzaService.getPizzaById(id);
+    public String delete(@PathVariable Integer id, @RequestParam("pizzaId") Optional<Integer> pizzaIdParam, RedirectAttributes redirectAttributes){
+        Integer pizzaId = pizzaIdParam.get();
         try {
-            boolean success= offerService.deleteByID(id);
-            if (success){
-                redirectAttributes.addFlashAttribute("message", new FlashMessage(FlashMessage.FlashMessageType.SUCCESS, "Elemento cancellato con successo"));
-            } else {
-                redirectAttributes.addFlashAttribute("message", new FlashMessage(FlashMessage.FlashMessageType.ERROR, "Impossibile cancellare questo elemento"));
-            }
-        } catch (RuntimeException e){
-            redirectAttributes.addFlashAttribute("message", new FlashMessage(FlashMessage.FlashMessageType.ERROR, "Offerta Speciale con id: " + id + "non trovata"));
+            offerService.deleteByID(id);
+            redirectAttributes.addFlashAttribute("message", new FlashMessage(FlashMessage.FlashMessageType.SUCCESS,
+                    "Offerta cancellata"));
+        } catch (RuntimeException e) {
+            redirectAttributes.addFlashAttribute("message", new FlashMessage(FlashMessage.FlashMessageType.ERROR,
+                    "Offerta non trovata"));
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("message", new FlashMessage(FlashMessage.FlashMessageType.ERROR,
+                    "Impossibile cancellare"));
         }
-        return "redirect:/pizzas/" + pizza.getId();
+        if (pizzaId == null) {
+            return "redirect:/books";
+        }
+        return "redirect:/pizzas/" + Integer.toString(pizzaId);
     }
-
-
-
 }

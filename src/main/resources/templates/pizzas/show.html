@@ -62,7 +62,7 @@
             <td th:text="${#temporals.format(offer.finishDate, 'dd/MM/yyyy')}"></td>
             <td>
                 <a th:href="@{|/offers/edit/*{id}|}" title="Modifica" class="text-black"><i class="fa-solid fa-pen"></i></a>
-                <a th:href="@{|/offers/delete/*{id}|}" title="Elimina" class="text-black ms-3"><i class="fa-solid fa-trash"></i></a>
+                <a th:href="@{|/offers/delete/*{id}?pizzaId=${pizza.id}|}" title="Elimina" class="text-black ms-3"><i class="fa-solid fa-trash"></i></a>
             </td>
         </tr>
         </tbody>

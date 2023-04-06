@@ -51,7 +51,7 @@ public class IngredientController {
         }
     }
     @PostMapping("/edit/{id}")
-    public String update(@PathVariable Integer id, @Valid @ModelAttribute("ingredient") Ingredient formIngredient, BindingResult bindingResult, Model model){
+    public String update(@Valid @PathVariable Integer id, @ModelAttribute("ingredient") Ingredient formIngredient, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
             return "/ingredients/edit";
         }
