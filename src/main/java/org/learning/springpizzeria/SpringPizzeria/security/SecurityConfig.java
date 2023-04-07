@@ -37,8 +37,11 @@ public class SecurityConfig {
                 .requestMatchers("/pizzas/create", "/pizzas/edit/**", "/pizzas/delete/**").hasAuthority("admin")
                 .requestMatchers("/", "/pizzas", "/pizzas/**").hasAnyAuthority("admin", "user")
                 .requestMatchers("/**").permitAll()
-                .and().formLogin()
-                .and().logout()
+                .and().formLogin(f->f.loginPage("/login").permitAll())
+//                .loginPage("/login/login")
+//                .failureUrl("/login/login-error.html")
+                .logout().permitAll()
+                .logoutSuccessUrl("/")
                 .and().exceptionHandling();
 
         return httpSecurity.build();

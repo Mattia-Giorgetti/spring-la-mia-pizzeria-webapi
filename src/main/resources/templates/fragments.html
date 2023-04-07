@@ -33,8 +33,8 @@
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" th:value="${searchcontent}">
                 <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ffc007;"></i></button>
             </form>
-            <li class="nav-item dropdown mb-4 ms-0 ms-lg-3">
-                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" sec:authentication="name">
+            <li class="nav-item dropdown mb-4 ms-0 ms-lg-3" th:if="${username}">
+                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" sec:authentication ="name">
 
                 </a>
                 <ul class="dropdown-menu">

@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link th:replace="~{fragments :: head}">
+  <title>Experis pizza Logout</title>
+</head>
+<body>
+<div class="container-md py-5">
+  <form class="form-signin text-center" method="post" action="/logout">
+    <h2 class="text-center py-5 main-title">Sicuro di voler eseguire il Logout?</h2>
+<!--    <input name="_csrf" type="hidden" value="cfOrmMNX9upZCk0HC3o9w_aQEGnWWg2O02UKIErLpMrZJ2qpQcGer6Izko90bi4xP1cJpsWpPQvnOT-j4FIzQyn9xfjrQw_P" />-->
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+    <button class="btn btn-dark btn-block" type="submit">Si, sono sicuro</button>
+  </form>
+</div>
+</body>
+</html>
