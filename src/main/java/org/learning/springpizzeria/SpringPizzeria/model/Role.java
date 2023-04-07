@@ -1,21 +1,17 @@
 package org.learning.springpizzeria.SpringPizzeria.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "ingredients")
-//@OnDelete(action = OnDeleteAction.CASCADE) 
-public class Ingredient {
-
+@Table(name = "roles")
+public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
-    @NotBlank(message = "Non puoi lasciare il campo vuoto")
+    @Column(nullable = false, unique = true)
     private String name;
 
     public Integer getId() {
@@ -39,9 +35,9 @@ public class Ingredient {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Ingredient that = (Ingredient) o;
+        Role role = (Role) o;
 
-        return getName() != null ? getName().equals(that.getName()) : that.getName() == null;
+        return getName() != null ? getName().equals(role.getName()) : role.getName() == null;
     }
 
     @Override

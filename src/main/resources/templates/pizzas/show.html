@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -45,8 +45,8 @@
 <!--    OFFERTE SPECIALI -->
 
     <h2>Offerte Speciali</h2>
-    <a th:href="@{/offers/create(pizzaId=${pizza.id})}" class="btn btn-dark my-4">Aggiungi nuova offerta</a>
-    <table class="table" th:object="${pizza}" th:if="${pizza.offers.size() > 0}">
+    <a th:href="@{/offers/create(pizzaId=${pizza.id})}" class="btn btn-dark my-4" sec:authorize="hasAuthority('admin')">Aggiungi nuova offerta</a>
+    <table class="table mt-3 mb-5" th:object="${pizza}" th:if="${pizza.offers.size() > 0}">
         <thead>
         <tr>
             <th scope="col">Nome</th>
@@ -61,8 +61,8 @@
             <td th:text="${#temporals.format(offer.startingDate, 'dd/MM/yyyy')}"></td>
             <td th:text="${#temporals.format(offer.finishDate, 'dd/MM/yyyy')}"></td>
             <td>
-                <a th:href="@{|/offers/edit/*{id}|}" title="Modifica" class="text-black"><i class="fa-solid fa-pen"></i></a>
-                <a th:href="@{|/offers/delete/*{id}?pizzaId=${pizza.id}|}" title="Elimina" class="text-black ms-3"><i class="fa-solid fa-trash"></i></a>
+                <a th:href="@{|/offers/edit/*{id}|}" title="Modifica" class="text-black" sec:authorize="hasAuthority('admin')"><i class="fa-solid fa-pen"></i></a>
+                <a th:href="@{|/offers/delete/*{id}?pizzaId=${pizza.id}|}" title="Elimina" class="text-black ms-3" sec:authorize="hasAuthority('admin')"><i class="fa-solid fa-trash"></i></a>
             </td>
         </tr>
         </tbody>

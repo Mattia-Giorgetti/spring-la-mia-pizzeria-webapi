@@ -21,3 +21,14 @@ INSERT INTO db_pizzeria.ingredients(name)VALUES('Bufala');
 INSERT INTO db_pizzeria.ingredients(name)VALUES('Guanciale');
 INSERT INTO db_pizzeria.ingredients(name)VALUES('Nduja');
 INSERT INTO db_pizzeria.ingredients(name)VALUES('Salsiccia');
+
+INSERT INTO db_pizzeria.users(email, first_name, last_name, password)VALUES('mattia@admin.com', 'Mattia', 'Admin', '{noop}clelia1111');
+INSERT INTO db_pizzeria.users(email, first_name, last_name, password)VALUES('mattia@user.com', 'Mattia', 'User', '{noop}clelia1111');
+
+INSERT INTO db_pizzeria.roles(id, name)VALUES(1, 'admin');
+INSERT INTO db_pizzeria.roles(id, name)VALUES(2, 'user');
+
+INSERT INTO db_pizzeria.user_role(user_id, role_id)VALUES(1, 1);
+INSERT INTO db_pizzeria.user_role(user_id, role_id)VALUES(2, 2);
+
+
