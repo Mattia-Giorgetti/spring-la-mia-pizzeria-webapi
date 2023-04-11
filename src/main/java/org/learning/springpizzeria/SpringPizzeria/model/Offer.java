@@ -1,5 +1,6 @@
 package org.learning.springpizzeria.SpringPizzeria.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotEmpty;
@@ -26,6 +27,7 @@ public class Offer {
 
     @ManyToOne
     @NotNull
+    @JsonIgnore
     private Pizza pizza;
 
 //    GETTER SETTER

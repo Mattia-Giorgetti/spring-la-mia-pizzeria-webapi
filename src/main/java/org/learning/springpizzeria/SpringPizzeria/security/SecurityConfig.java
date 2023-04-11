@@ -43,6 +43,7 @@ public class SecurityConfig {
                 .logout().permitAll()
                 .logoutSuccessUrl("/")
                 .and().exceptionHandling();
+        httpSecurity.csrf().disable();
 
         return httpSecurity.build();
     }

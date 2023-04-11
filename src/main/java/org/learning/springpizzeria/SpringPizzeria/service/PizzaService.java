@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -54,8 +55,8 @@ public class PizzaService {
         return pizzaRepository.save(updatedPizza);
     }
 
-    public boolean deleteByID(Integer id) throws RuntimeException{
-        pizzaRepository.findById(id).orElseThrow(() -> new RuntimeException(Integer.toString(id)));
+    public boolean deleteByID(Integer id) throws NoSuchElementException {
+        pizzaRepository.findById(id).orElseThrow(() -> new NoSuchElementException(Integer.toString(id)));
         try {
             pizzaRepository.deleteById(id);
             return true;

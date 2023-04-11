@@ -22,6 +22,18 @@ INSERT INTO db_pizzeria.ingredients(name)VALUES('Guanciale');
 INSERT INTO db_pizzeria.ingredients(name)VALUES('Nduja');
 INSERT INTO db_pizzeria.ingredients(name)VALUES('Salsiccia');
 
+INSERT INTO db_pizzeria.pizza_ingredient(pizza_id, ingredient_id)VALUES(1, 1);
+INSERT INTO db_pizzeria.pizza_ingredient(pizza_id, ingredient_id)VALUES(1, 2);
+INSERT INTO db_pizzeria.pizza_ingredient(pizza_id, ingredient_id)VALUES(1, 5);
+INSERT INTO db_pizzeria.pizza_ingredient(pizza_id, ingredient_id)VALUES(2, 6);
+INSERT INTO db_pizzeria.pizza_ingredient(pizza_id, ingredient_id)VALUES(3, 5);
+INSERT INTO db_pizzeria.pizza_ingredient(pizza_id, ingredient_id)VALUES(3, 10);
+INSERT INTO db_pizzeria.pizza_ingredient(pizza_id, ingredient_id)VALUES(3, 12);
+INSERT INTO db_pizzeria.pizza_ingredient(pizza_id, ingredient_id)VALUES(5, 4);
+INSERT INTO db_pizzeria.pizza_ingredient(pizza_id, ingredient_id)VALUES(5, 8);
+INSERT INTO db_pizzeria.pizza_ingredient(pizza_id, ingredient_id)VALUES(5, 9);
+
+
 INSERT INTO db_pizzeria.users(email, first_name, last_name, password)VALUES('mattia@admin.com', 'Mattia', 'Admin', '{noop}clelia1111');
 INSERT INTO db_pizzeria.users(email, first_name, last_name, password)VALUES('mattia@user.com', 'Mattia', 'User', '{noop}clelia1111');
 
